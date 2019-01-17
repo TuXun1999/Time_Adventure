@@ -1,0 +1,14 @@
+package Roles;
+
+public class worm extends roles{
+	private int wpn_dmg;
+	
+	public worm(int attack, int stamina, int wpn_dmg){
+		super(attack, stamina);
+		this.wpn_dmg = wpn_dmg;
+	}
+	
+	public int damage_weapon(){
+		return wpn_dmg;
+	}
+}
