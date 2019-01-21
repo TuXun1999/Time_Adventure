@@ -49,6 +49,46 @@ public class adventure {
 			else if(chance > Stats.mon_common && chance <= Stats.mon_worm){
 				mons[i] = new worm(attack, stamina, Stats.mon_wpn_dmg);
 			}
+			else if (chance > Stats.mon_worm && chance <= Stats.mon_spider){
+				mons[i] = new spider(attack, stamina);
+			}
+			else {
+				mons[i] = new bomb(attack, stamina, Stats.mon_bmb_dmg);
+			}
+		}
+		
+		return mons;
+	}
+	
+	static public boolean fight(warrior w, people[] aliens, monster[] mons){
+		boolean isdead = false;
+		for (int i = 0 ; i < mons.length; i++){
+			isdead = battle(w, mons[i]);
+			if(isdead = true){
+				return isdead;
+			}
+		}
+		
+		for (int i = 0; i <aliens.length; i++){
+			isdead = battle(w, aliens[i]);
+			if(isdead = true)
+				return isdead;
+		}
+		
+		
+		
+	}
+	
+	private void battle(warrior w, monster m){
+		int round = 0;
+		while(w.show_stamina() > 0 && m.show_stamina() > 0){
+			if(round%2 == 0){
+				int chance = (int)(Math.random()*10);
+				m.suffer(w.do_attack(chance));
+			}
+			else
+				w.suffer(m.do_attack());
+			
 		}
 	}
 		

@@ -8,6 +8,7 @@ public class swift extends people{
 	public swift(int attack,  int stamina, int armor, double chance){
 		super(attack, stamina, armor);
 		this.chance = chance;
+		this.type = "swift";
 	}
 	
 	public void suffer(int damage, double chance, boolean magic){

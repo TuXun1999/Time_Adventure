@@ -6,10 +6,12 @@ public class roles {
 	 */
 	protected int attack;
 	protected int stamina;
+	protected String type;
 	
 	public roles(int attack, int stamina){
 		this.attack = attack;
 		this.stamina = stamina;
+		this.type = "role";
 	}
 	
 	/*
@@ -22,7 +24,9 @@ public class roles {
 	public int do_attack(){
 		return attack;
 	}
-	
+	public int show_stamina(){
+		return stamina;
+	}
 	public void suffer(int damage){
 		stamina -= damage;
 	}

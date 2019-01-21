@@ -42,6 +42,15 @@ public class Stats {
 	
 	
 	public static int mon_wpn_dmg = 1;
+	public static int mon_bmb_dmg = 7;
+	
+	
+	
+	//Part III: warrior
+	public static int war_attack = 5;
+	public static int war_stamina = 100;
+	public static int war_armor = 5;
+	public static int war_anger = 2;
 	
 	
 }

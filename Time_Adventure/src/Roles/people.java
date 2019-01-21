@@ -9,6 +9,7 @@ public class people extends roles{
 	public people(int attack, int stamina, int armor){
 		super(attack, stamina);
 		this.armor = armor;
+		this.type = "people";
 	}
 	
 	//Armor will be of no use in face of magic damage

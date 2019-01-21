@@ -13,7 +13,7 @@ public class TIme_travel {
 		int bomb_year = (int)(Math.random()*year);
 		Scanner user_input = new Scanner(System.in);
 		int choice = -1;
-		boolean result = false;
+		int result = 1; //0: find the bomb; 1: failed to find the bomb, but survived; 2: dead...
 		int turns = 0;
 		while(choice != bomb_year){
 			System.out.println("Please select a year you want to enter: ");
@@ -21,7 +21,7 @@ public class TIme_travel {
 			
 			// Take an adventure
 			result = adventure(choice, bomb_year);
-			if(turns == 10 || result == true)
+			if(turns == 10 || result != 1)
 				break;
 			else{
 				turns++;
@@ -30,19 +30,20 @@ public class TIme_travel {
 			//Enter the store
 			enter_store();
 		}
-		if(result == true){
+		if(result == 0){
 			System.out.println("Great, you saved the universe!");
 			
 		}
 		else{
 			System.out.println("No, warrior, noooooooo... ...");
 		}
+		user_input.close();
 		
 	}
 	
 	
 	//The function to travel in one year
-	public static boolean adventure(int year, int bomb){
+	public static int adventure(int year, int bomb){
 		/*
 		 * The adventure in a year consists of three parts:
 		 * 1. generate enemies
@@ -50,16 +51,33 @@ public class TIme_travel {
 		 * 3. give hints
 		 */
 		
+		
 		//Part I: generating system
 		
 		people[] aliens = adventure.gen_aliens();
 		monster[] monsters = adventure.gen_monsters();
 		
+		
+		
+		warrior my_warrior = new warrior(
+				Stats.war_attack, Stats.war_stamina, Stats.war_armor, Stats.war_anger);
+		
+		
 		//Part II: violent fighting!!
-		fight(warrior, aliens, monsters);
-		
+		boolean isdead = adventure.fight(my_warrior, aliens, monsters);
+		if(isdead = true){
+			return 2;
+		}
 		//Part III: give some hints!
-		
+		if(year == bomb){
+			System.out.println("It is the bomb!!!!1");
+			return 0;
+		}
+		else{
+			String hint = (year > bomb)? "You enter a smaller year":"You enter a bigger year";
+			System.out.println(hint);
+			return 1;
+		}
 		
 	}
 	

@@ -6,6 +6,7 @@ public class bomb extends monster{
 	public bomb(int attack, int stamina, int hurt){
 		super(attack, stamina);
 		this.hurt = hurt;
+		this.type = "bomb";
 	}
 	public int explode(){
 		if(isdead()){

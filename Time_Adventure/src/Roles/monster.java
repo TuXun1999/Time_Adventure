@@ -3,6 +3,7 @@ package Roles;
 public class monster extends roles{
 	public monster(int attack, int stamina){
 		super(attack, stamina);
+		this.type = "monster";
 	}
 	public boolean ispoisoned(){
 		//Normally a monster has no poison

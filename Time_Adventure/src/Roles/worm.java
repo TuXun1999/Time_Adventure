@@ -6,6 +6,7 @@ public class worm extends monster{
 	public worm(int attack, int stamina, int wpn_dmg){
 		super(attack, stamina);
 		this.wpn_dmg = wpn_dmg;
+		this.type = "worm";
 	}
 	
 	public int damage_weapon(){
