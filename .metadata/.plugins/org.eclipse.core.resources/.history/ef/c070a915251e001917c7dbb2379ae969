@@ -42,7 +42,6 @@ public class Stats {
 	
 	
 	public static int mon_wpn_dmg = 1;
-	public static int mon_poison_dmg = 4;
 	public static int mon_bmb_dmg = 7;
 	
 	

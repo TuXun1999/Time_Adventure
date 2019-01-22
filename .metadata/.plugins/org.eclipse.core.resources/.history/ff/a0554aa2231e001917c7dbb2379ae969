@@ -9,8 +9,4 @@ public class spider extends monster{
 		//Normally a monster has no poison
 		return true;
 	}
-	
-	public int damage_weapon(){
-		return 0;
-	}
 }

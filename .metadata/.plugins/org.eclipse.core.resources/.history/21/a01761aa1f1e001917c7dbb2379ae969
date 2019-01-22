@@ -6,7 +6,7 @@ public class roles {
 	 */
 	protected int attack;
 	protected int stamina;
-	public String type;
+	protected String type;
 	
 	public roles(int attack, int stamina){
 		this.attack = attack;

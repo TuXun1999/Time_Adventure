@@ -30,9 +30,6 @@ public class people extends roles{
 		
 	}
 	
-	public int get_armor(){
-		return armor; 
-	}
 	public boolean ismagic(){
 		//Normal people don't know magic
 		return false;

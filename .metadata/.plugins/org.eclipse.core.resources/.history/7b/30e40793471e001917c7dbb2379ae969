@@ -70,12 +70,12 @@ public class adventure {
 		}
 		
 		for (int i = 0; i <aliens.length; i++){
-			isdead = battle2(w, aliens[i]);
+			isdead = battle(w, aliens[i]);
 			if(isdead = true)
 				return isdead;
 		}
 		
-		return isdead;
+		
 		
 	}
 	
@@ -99,9 +99,6 @@ public class adventure {
 			}
 			else{
 				//Round for monster to attack
-				System.out.println("Round " + round);
-				System.out.println(m.type);
-				System.out.println("Attack: " + m.do_attack());
 				w.suffer(m.do_attack());
 				if(m.type == "worm"){
 					worm_damage(w,m);
@@ -109,13 +106,7 @@ public class adventure {
 				}
 				else if (m.type == "spider"){
 					w.suffer(Stats.mon_poison_dmg);
-					
 				}
-				System.out.println("Warrior: " );
-				System.out.println("Stamina: " + w.show_stamina());
-				System.out.println("Armor: " + w.get_armor());
-				System.out.println("*****************************************");
-				
 			}
 				
 		}
@@ -136,51 +127,10 @@ public class adventure {
 		}
 	}
 	
-	static boolean battle2(warrior w, people a){
-		int round = 0;
-		while(w.show_stamina() > 0 && a.show_stamina() > 0){
-			/*
-			 * Continue the battle while one role is alive
-			 */
-			if(round%2 == 0){
-				//Round for warrior to attack
-				int chance = (int)(Math.random()*10);
-				int w_dmg = w.do_attack(chance);
-				a.suffer(w_dmg, Stats.alien_dodge_chance, w.ismagic());
-				System.out.println("Round " + round);
-				System.out.println("Warrior: " );
-				System.out.println("Attack: " + w_dmg);
-				System.out.println(a.type);
-				System.out.println("Stamina: " + a.show_stamina());
-				System.out.println("*****************************************");
-			}
-			else{
-				//Round for monster to attack
-				w.suffer(a.do_attack(), 0, a.ismagic());
-				System.out.println("Round " + round);
-				System.out.println(a.type);
-				System.out.println("Attack: " + a.do_attack());
-				w.suffer(a.do_attack());
-				System.out.println("Warrior: " );
-				System.out.println("Stamina: " + w.show_stamina());
-				System.out.println("Armor: " + w.get_armor());
-				System.out.println("*****************************************");
-				}	
-		}
-		
-		if(w.show_stamina() <= 0){
-			return true;
-		}
-		else{
-			return false; 
-		}
-	}
-	
 	
 	
 	private static void worm_damage(warrior w, monster m){
 		w.improve_attack(m.damage_weapon());
-		System.out.println("Do damage to the weapon!" + " " + m.damage_weapon());
 	}
 		
 }

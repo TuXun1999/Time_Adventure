@@ -13,7 +13,7 @@ public class people extends roles{
 	}
 	
 	//Armor will be of no use in face of magic damage
-	public void suffer(int damage, double chance, boolean magic){
+	public void suffer(int damage, boolean magic){
 		if (magic){
 			stamina -= damage;
 		}
@@ -30,9 +30,6 @@ public class people extends roles{
 		
 	}
 	
-	public int get_armor(){
-		return armor; 
-	}
 	public boolean ismagic(){
 		//Normal people don't know magic
 		return false;
