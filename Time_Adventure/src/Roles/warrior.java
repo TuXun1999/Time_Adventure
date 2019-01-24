@@ -14,6 +14,7 @@ public class warrior extends people{
 	
 	public int do_attack(int chance){
 		if (chance <= this.anger){
+			System.out.println("Furious Attack!!");
 			return (this.attack * 2);
 		}
 		else{

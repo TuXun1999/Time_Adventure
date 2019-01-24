@@ -13,6 +13,7 @@ public class swift extends people{
 	
 	public void suffer(int damage, double chance, boolean magic){
 		if(chance <= this.chance){
+			System.out.println("Attack Missed!!");
 		}
 		else{
 			if (magic){

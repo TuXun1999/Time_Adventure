@@ -1,7 +1,5 @@
 package Time_Travel;
 import Roles.*;
-
-
 import Stats.Stats;
 
 public class adventure {
@@ -64,14 +62,14 @@ public class adventure {
 		boolean isdead = false;
 		for (int i = 0 ; i < mons.length; i++){
 			isdead =  battle(w, mons[i]);
-			if(isdead = true){
+			if(isdead == true){
 				return isdead;
 			}
 		}
 		
 		for (int i = 0; i <aliens.length; i++){
 			isdead = battle2(w, aliens[i]);
-			if(isdead = true)
+			if(isdead == true)
 				return isdead;
 		}
 		
@@ -93,6 +91,7 @@ public class adventure {
 				System.out.println("Round " + round);
 				System.out.println("Warrior: " );
 				System.out.println("Attack: " + w_dmg);
+				    System.out.println("Stamina: " + w.show_stamina());
 				System.out.println(m.type);
 				System.out.println("Stamina: " + m.show_stamina());
 				System.out.println("*****************************************");
@@ -102,7 +101,7 @@ public class adventure {
 				System.out.println("Round " + round);
 				System.out.println(m.type);
 				System.out.println("Attack: " + m.do_attack());
-				w.suffer(m.do_attack());
+				w.suffer(m.do_attack(), 0, false);
 				if(m.type == "worm"){
 					worm_damage(w,m);
 					
@@ -117,6 +116,7 @@ public class adventure {
 				System.out.println("*****************************************");
 				
 			}
+			round++;
 				
 		}
 		
@@ -131,8 +131,9 @@ public class adventure {
 			if(w.show_stamina() <= 0){
 				return true;
 			}
-			else
+			else{
 				return false; 
+			}
 		}
 	}
 	
@@ -146,7 +147,8 @@ public class adventure {
 				//Round for warrior to attack
 				int chance = (int)(Math.random()*10);
 				int w_dmg = w.do_attack(chance);
-				a.suffer(w_dmg, Stats.alien_dodge_chance, w.ismagic());
+				double dodge_chance = Math.random();
+				a.suffer(w_dmg, dodge_chance, w.ismagic());
 				System.out.println("Round " + round);
 				System.out.println("Warrior: " );
 				System.out.println("Attack: " + w_dmg);
@@ -156,16 +158,16 @@ public class adventure {
 			}
 			else{
 				//Round for monster to attack
-				w.suffer(a.do_attack(), 0, a.ismagic());
 				System.out.println("Round " + round);
 				System.out.println(a.type);
 				System.out.println("Attack: " + a.do_attack());
-				w.suffer(a.do_attack());
+				w.suffer(a.do_attack(), 0, a.ismagic());
 				System.out.println("Warrior: " );
 				System.out.println("Stamina: " + w.show_stamina());
 				System.out.println("Armor: " + w.get_armor());
 				System.out.println("*****************************************");
 				}	
+			round++;	
 		}
 		
 		if(w.show_stamina() <= 0){
@@ -174,6 +176,7 @@ public class adventure {
 		else{
 			return false; 
 		}
+		
 	}
 	
 	
